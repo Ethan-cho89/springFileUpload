@@ -1,0 +1,12 @@
+
+create table fileinfo
+(
+	filenum number(5) primary key,	
+	writer varchar2(20),
+	title varchar2(100),
+	context varchar2(200),
+	orgfilename varchar2(150),
+	savefilename varchar2(150),
+	filesize number
+	);
+	create sequence fileinfo_seq;

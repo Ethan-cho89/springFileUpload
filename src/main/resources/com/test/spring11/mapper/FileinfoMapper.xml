@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="com.test.spring11.mapper.FileinfoMapper">
+  
+<!--   <insert id="insert" parameterType="fileinfo"/> -->
+<!--   	insert into fileinfo values(fileinfo_seq.nextval,#{writer},#{title},#{content},#{orgfilename},#{savefilename},#{filesize}) -->
+<!--   </insert> -->
+
+	<delete id="delete" parameterType="int">
+		delete fileinfo where filenum =#{filenum}
+	</delete>
+	
+	<select id="list" resultType="fileinfo">
+		select * from fileinfo
+	</select>
+	
+	<select id="select" parameterType="int" resultType="fileinfo">
+		select * from fileinfo where filenum=#{filenum}
+	</select>
+	
+	<update id="edit" parameterType="fileinfo">
+		update fileinfo set writer=#{writer},title=#{title},content=#{content}
+		<if test="orgfilename!=null">
+		,orgfilename=#{orgfilename},savefilename=#{savefilename},filesize=#{filesize} 
+		</if>
+		where filenum=#{filenum}
+	</update>
+
+</mapper>
+  
+  

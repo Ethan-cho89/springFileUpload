@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+  <typeAliases>
+  	<typeAlias type="com.test.spring11.vo.FileInfoVo" alias="fileinfo"/>
+  </typeAliases>
+  
+  
+  <mappers>
+  	<!-- 읽어올 Mapper파일 설정 -->
+    <mapper resource="com/test/spring11/mapper/FileinfoMapper.xml"/>
+  </mappers>
+</configuration>

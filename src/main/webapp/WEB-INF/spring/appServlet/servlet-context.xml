@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans:beans xmlns="http://www.springframework.org/schema/mvc"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:beans="http://www.springframework.org/schema/beans"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/mvc https://www.springframework.org/schema/mvc/spring-mvc.xsd
+		http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">
+
+	
+	
+	<annotation-driven />
+
+	<resources mapping="/resources/**" location="/resources/" />
+
+	<!-- fileupload  -->
+	<beans:bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		<!-- 최대 업로드 바이트수 크기 지정 -->
+		<beans:property name="maxUploadSize" value="5242880"/>
+	</beans:bean> 
+	
+	<!-- 다운로드 뷰 생성 -->
+	<beans:bean name="filedownloadView" class="com.test.spring11.views.FiledownloadView"/>
+	
+	<!-- 일치하는 뷰 이름이 있으면 해당 뷰로 응답하는 뷰리저버  -->
+	<beans:bean class="org.springframework.web.servlet.view.BeanNameViewResolver">
+		<beans:property name="order" value="1"/>
+	</beans:bean><!-- 순위를 정하는 코드 -->
+
+
+	<beans:bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<beans:property name="order" value="2"/>
+		<beans:property name="prefix" value="/WEB-INF/views/" />
+		<beans:property name="suffix" value=".jsp" />
+	</beans:bean>
+	
+	<context:component-scan base-package="com.test.spring11.controller" />
+	
+	
+	
+</beans:beans>
